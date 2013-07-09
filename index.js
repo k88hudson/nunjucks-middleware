@@ -10,7 +10,7 @@ var gaze = require("gaze");
 var glob = require("glob")
 var async = require("async");
 
-var index = {};
+var index = [];
 
 // OPTIONS
 //  force
@@ -109,11 +109,21 @@ module.exports = function(options) {
     async.map(files, compileFile, build);
   });
 
+
+
   // Middleware
   return function nunjucksMiddleware(req, res, next) {
     // Only deal with GET or HEAD requests
     if (req.method.toUpperCase() != "GET" && req.method.toUpperCase() != "HEAD") {
       return next();
+    }
+
+    if (!outputPath === req.path ) {
+      return next();
+    }
+
+    if (!index) {
+
     }
 
     return next();
