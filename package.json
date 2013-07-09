@@ -1,0 +1,25 @@
+{
+  "name": "nunjucks-middleware",
+  "version": "0.0.0",
+  "description": "Middleware for precopiling nunjucks templates on the go",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "nunjucks",
+    "templating",
+    "middleware"
+  ],
+  "author": "Kate Huonds (@k88hudson)",
+  "license": "BSD",
+  "dependencies": {
+    "nunjucks": "~0.1.9",
+    "gaze": "~0.4.0",
+    "mkdirp": "~0.3.5",
+    "debug": "~0.7.2",
+    "glob": "~3.2.1",
+    "async": "~0.2.9"
+  }
+}
