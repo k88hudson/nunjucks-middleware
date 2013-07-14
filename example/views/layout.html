@@ -12,8 +12,8 @@
     <script>
     requirejs.config({baseUrl: '/js'});
     require(['nunjucks', 'templates'], function(nunjucks){
-      var test = nunjucks.env.render("parts/part.html", {title: "ASdasd"});
-      var test2 = nunjucks.env.render("parts/lower/stuff.html", {title: "Styff"});
+      var test = nunjucks.env.render("parts/lower/stuff3.html", {title: "ASdasd"});
+      var test2 = nunjucks.env.render("index.html", {title: "Styff"});
       console.log(test, test2);
     });
     </script>

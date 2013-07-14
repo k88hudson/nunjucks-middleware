@@ -12,17 +12,18 @@ var express = require('express'),
 var app = express();
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 1989);
   app.set('views', __dirname + '/views');
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(nunjucksMiddleware({
-    baseDir: __dirname,
     src: "/views",
     output: "/public/js/templates.js",
-    express: app
+    endpoint: "/js/templates.js",
+    express: app,
+    debug: true
   }));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
@@ -33,10 +34,6 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-
-app.get('/js/nunjucks.js', function(req,res) {
-  res.sendfile( path.resolve(__dirname,"node_modules/nunjucks/browser/nunjucks.js" ));
-});
 
 app.get('/js/require.js', function(req,res) {
   res.sendfile( path.resolve(__dirname,"node_modules/requirejs/require.js" ));
