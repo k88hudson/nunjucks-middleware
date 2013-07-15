@@ -46,17 +46,8 @@ module.exports = function(options) {
 
   function log(message, type) {
     if (debug) {
-      switch(type) {
-        case 'log':
-        case 'info':
-        case 'error':
-        case 'warn':
-          break;
-        default:
-          type = 'log';
-      }
-
-      console[type]('\033[90m%s :\033[0m \033[36m%s\033[0m', "NUNJUCKS: ", message);
+      type = type || 'log';
+      console[type]('\033[90m%s :\033[0m \033[36m%s\033[0m', 'Nunjucks: ', message);
     }
   };
 
@@ -83,11 +74,10 @@ module.exports = function(options) {
       var compiledText = "";
       var envOpts = "{}";
 
-      log("BUILDING!");
-
+      log("Building " + outputPath + "...");
       compiledText += '(function() {\n';
       compiledText += 'var templates = {};\n';
-      log("Building " + outputPath + "...");
+
       Object.keys(index).forEach(function(filename) {
         var src = index[filename];
         compiledText += 'templates["' + filename + '"] = (function() {';
@@ -118,7 +108,7 @@ module.exports = function(options) {
             return next(err);
           }
           built = compiledText;
-          log( "Updated file " + outputPath );
+          log("Updated " + outputPath);
           return next();
         });
       });
@@ -127,16 +117,16 @@ module.exports = function(options) {
     function compileFile(filepath, callback) {
       var filename = path.relative(sourceDir, filepath);
       if (index[filename]) {
-        log("Checking %s: it has been compiled already.", filename);
+        log(filename + " has been compiled already");
         return callback(null, index[filename]);
       }
       fs.readFile(filepath, 'utf-8', function(err, data) {
         if (err) {
-          log( "Error reading " + filepath);
+          log( "Error reading " + filepath, 'error');
           delete index[filename];
           return callback();
         } else {
-          log("Looks like " + filename + " is new or had changes!!!");
+          log("Compiling " + filename);
           index[filename] = compiler.compile(data);
           return callback(null, index[filename]);
         }
@@ -150,10 +140,10 @@ module.exports = function(options) {
       if (!once) {
         gaze(patterns, function(err, watcher) {
           var watched = this.watched();
-          log("Watching files in " + patterns);
+          log("Debug mode: Watching files in " + patterns);
           this.on('all', function(event, filepath) {
             var filename = path.relative(sourceDir, filepath);
-            log( "Looks like "+ filename + " was "+ event +". Flagging to recompile.");
+            log( "Looks like "+ filename + " was "+ event +". Flagging to recompile");
             delete index[filename];
             built = false;
           });
