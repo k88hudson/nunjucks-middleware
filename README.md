@@ -3,6 +3,7 @@ Nunjucks Middleware
 
 See example/
 
+``` javascript
  app.use(nunjucksMiddleware({
     src: "/views",
     output: "/public/js/templates.js",
@@ -12,3 +13,4 @@ See example/
   }));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
+```
