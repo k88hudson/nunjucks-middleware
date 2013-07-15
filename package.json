@@ -1,6 +1,6 @@
 {
   "name": "nunjucks-middleware",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Middleware for recompiling nunjucks templates on the go",
   "main": "index.js",
   "scripts": {
