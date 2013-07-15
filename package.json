@@ -6,19 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
+  "repository": "https://github.com/k88hudson/nunjucks-middleware.git",
   "keywords": [
     "nunjucks",
     "templating",
     "middleware"
   ],
   "author": "Kate Hudson (@k88hudson)",
-  "license": "BSD",
+  "license": "Apache-2.0",
   "dependencies": {
     "nunjucks": "~0.1.9",
     "gaze": "~0.4.0",
     "mkdirp": "~0.3.5",
-    "debug": "~0.7.2",
     "glob": "~3.2.1",
     "async": "~0.2.9"
   }
