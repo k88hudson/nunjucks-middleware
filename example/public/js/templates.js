@@ -1,5 +1,41 @@
 (function() {
 var templates = {};
+templates["index-alt.html"] = (function() {function root(env, context, frame, runtime) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var parentTemplate = env.getTemplate("layout.html", true);
+for(var t_1 in parentTemplate.blocks) {
+context.addBlock(t_1, parentTemplate.blocks[t_1]);
+}
+output += "\n";
+output += "\n";
+return parentTemplate.rootRenderFunc(env, context, frame, runtime);
+} catch (e) {
+  runtime.handleError(e, lineno, colno);
+}
+}
+function b_content(env, context, frame, runtime) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+var l_super = context.getSuper(env, "content", b_content, frame, runtime);
+output += "\n<h1>Hi, welcome to some! awesome some cool cool Stuff cool ";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "title"), env.autoesc);
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "title"), env.autoesc);
+output += "</h1>\n";
+return output;
+} catch (e) {
+  runtime.handleError(e, lineno, colno);
+}
+}
+return {
+b_content: b_content,
+root: root
+};
+})();
 templates["index.html"] = (function() {function root(env, context, frame, runtime) {
 var lineno = null;
 var colno = null;
@@ -22,7 +58,7 @@ var colno = null;
 var output = "";
 try {
 var l_super = context.getSuper(env, "content", b_content, frame, runtime);
-output += "\n<h1>Hi, welcome to some awesome some s Stuff ";
+output += "\n<h1>Hi, welcome! wto some awesome some s Stuff ";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "title"), env.autoesc);
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "title"), env.autoesc);
 output += "</h1>\n";
@@ -80,42 +116,6 @@ return output;
 }
 }
 return {
-root: root
-};
-})();
-templates["index-alt.html"] = (function() {function root(env, context, frame, runtime) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-var parentTemplate = env.getTemplate("layout.html", true);
-for(var t_1 in parentTemplate.blocks) {
-context.addBlock(t_1, parentTemplate.blocks[t_1]);
-}
-output += "\n";
-output += "\n";
-return parentTemplate.rootRenderFunc(env, context, frame, runtime);
-} catch (e) {
-  runtime.handleError(e, lineno, colno);
-}
-}
-function b_content(env, context, frame, runtime) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-var l_super = context.getSuper(env, "content", b_content, frame, runtime);
-output += "\n<h1>Hi, welcome to some! awesome some cool cool Stuff cool ";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "title"), env.autoesc);
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "title"), env.autoesc);
-output += "</h1>\n";
-return output;
-} catch (e) {
-  runtime.handleError(e, lineno, colno);
-}
-}
-return {
-b_content: b_content,
 root: root
 };
 })();

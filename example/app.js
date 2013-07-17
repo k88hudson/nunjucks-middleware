@@ -23,6 +23,7 @@ app.configure(function(){
     output: "/public/js/templates.js",
     endpoint: "/js/templates.js",
     express: app,
+    once: true,
     debug: true
   }));
   app.use(app.router);
